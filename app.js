@@ -50,24 +50,24 @@ const randomChoice = (arr) => {
 [...Array(20).keys()].forEach(() => {
   const person = {};
 
-  person["gender"] = randomChoice(genders);
+  person.gender = randomChoice(genders);
 
-  person["gender"] === "male"
-    ? (person["name"] = randomChoice(maleNames))
-    : (person["name"] = randomChoice(femaleNames));
+  person.name = randomChoice(
+    person.gender === "male" ? maleNames : femaleNames
+  );
 
-  person["lastName"] = randomChoice(lastNames);
+  person.lastName = randomChoice(lastNames);
 
-  person["age"] = Math.floor(Math.random() * (78 - 18 + 1)) + 18;
+  person.age = Math.floor(Math.random() * (78 - 18 + 1)) + 18;
 
-  person["email"] =
-    `${person["name"]}.${person["lastName"]}-${person["age"]}@gmail.com`.toLowerCase();
+  person.email =
+    `${person.name}.${person.lastName}-${person.age}@gmail.com`.toLowerCase();
 
-  person["phone"] = Math.floor(
+  person.phone = Math.floor(
     (Math.random() + Math.floor(Math.random() * 9) + 1) * Math.pow(10, 8)
   );
 
-  person["uniqueId"] = Math.random().toString(36).substring(2, 9);
+  person.uniqueId = Math.random().toString(36).substring(2, 9);
 
   people.push(person);
 });
